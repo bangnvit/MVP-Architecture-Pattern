@@ -1,5 +1,8 @@
 package com.bangnv.coffeeorder.model
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class Product(
     var id: Long = 0,
     var name: String = "",
