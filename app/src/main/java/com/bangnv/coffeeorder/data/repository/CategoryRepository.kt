@@ -7,6 +7,7 @@ import retrofit2.Response
 import com.bangnv.coffeeorder.model.Category
 
 class CategoryRepository(private val api: AppApi) {
+    // Using Callback
     fun getCategories(callback: (List<Category>?, String?) -> Unit) {
         api.getCategories().enqueue(object : Callback<List<Category>> {
             override fun onResponse(call: Call<List<Category>>, response: Response<List<Category>>) {

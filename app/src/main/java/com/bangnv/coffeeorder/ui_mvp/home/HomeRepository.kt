@@ -9,10 +9,18 @@ class HomeRepository(
     private val productRepository: ProductRepository,
     private val categoryRepository: CategoryRepository
 ) {
-    fun getProducts(callback: (List<Product>?, String?) -> Unit) {
-        productRepository.getProducts(callback)
+
+    // Using Coroutine
+    suspend fun getProducts(): List<Product>? {
+        return productRepository.getProducts()
     }
 
+    // Using Callback
+//    fun getProducts(callback: (List<Product>?, String?) -> Unit) {
+//        productRepository.getProducts(callback)
+//    }
+
+    // Using Callback
     fun getCategories(callback: (List<Category>?, String?) -> Unit) {
         categoryRepository.getCategories(callback)
     }
