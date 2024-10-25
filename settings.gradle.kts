@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Coffee MVP"
+rootProject.name = "MVP Architecture Pattern"
 include(":app")

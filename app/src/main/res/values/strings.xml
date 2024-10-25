@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Coffee MVP</string>
+    <string name="app_name">MVP-Architecture-Pattern</string>
     <string name="title_home">Trang chủ</string>
     <string name="title_cart">Giỏ hàng</string>
     <string name="title_feedback">Phản hồi</string>
@@ -23,6 +23,5 @@
     <string name="feedback_fragment">Feedback Fragment</string>
     <string name="contact_fragment">Contact Fragment</string>
     <string name="account_fragment">Account Fragment</string>
-
 
 </resources>

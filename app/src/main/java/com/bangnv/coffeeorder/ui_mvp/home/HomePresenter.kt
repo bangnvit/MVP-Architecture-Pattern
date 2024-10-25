@@ -1,41 +1,27 @@
 package com.bangnv.coffeeorder.ui_mvp.home
 
-import com.bangnv.coffeeorder.data.network.RetrofitClient
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-
-class HomePresenter(private val view: HomeMvpView) : HomeMvpPresent {
-    private val api = RetrofitClient.instance
-    private val disposables = CompositeDisposable() // To manage RxJava subscriptions
-
+class HomePresenter(
+    private val view: HomeMvpView,
+    private val homeRepository: HomeRepository
+) : HomeMvpPresent {
 
     override fun fetchProducts() {
-        val disposable = api.getProducts() // Giả định phương thức này trả về Observable<List<Product>>
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { products -> view.showProducts(products) },
-                { error -> view.showError(error.message ?: "An error occurred") }
-            )
-
-        disposables.add(disposable)
+        homeRepository.getProducts { products, errorMessage ->
+            if (products != null) {
+                view.showProducts(products)
+            } else {
+                view.showError(errorMessage ?: "An error occurred")
+            }
+        }
     }
 
     override fun fetchCategories() {
-        val disposable = api.getCategories() // Giả định phương thức này trả về Observable<List<Category>>
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { categories -> view.showCategories(categories) },
-                { error -> view.showError(error.message ?: "An error occurred") }
-            )
-
-        disposables.add(disposable)
+        homeRepository.getCategories { categories, errorMessage ->
+            if (categories != null) {
+                view.showCategories(categories)
+            } else {
+                view.showError(errorMessage ?: "An error occurred")
+            }
+        }
     }
-
-    override fun clear() {
-        disposables.clear() // Release resources / Clean up used resources
-    }
-
 }

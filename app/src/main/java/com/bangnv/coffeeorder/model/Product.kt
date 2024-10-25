@@ -8,8 +8,8 @@ data class Product(
     var sale: Int = 0,
     var image: String? = "",
     var banner: String? = "",
-    var isPopular: Boolean = false,
-    val images: List<String> = emptyList(),
+    var isPopular: String? = "",
+    val images: List<String>? = emptyList(),
     var categoryId: Long = 0,
     var categoryName: String? = ""
 )

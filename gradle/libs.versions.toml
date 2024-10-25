@@ -1,25 +1,25 @@
 [versions]
-agp = "8.4.1"
-kotlin = "1.9.0"
-googleServices = "4.4.2"
+agp = "8.4.2"
+kotlin = "2.0.21"
 ksp = "1.8.10-1.0.9"
-coreKtx = "1.10.1"
+coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
-material = "1.10.0"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.3"
 constraintlayout = "2.1.4"
-navigationFragmentKtx = "2.6.0"
-navigationUiKtx = "2.6.0"
-lifecycleLivedataKtx = "2.6.1"
-lifecycleViewmodelKtx = "2.6.1"
+navigationFragmentKtx = "2.8.3"
+navigationUiKtx = "2.8.3"
+lifecycleLivedataKtx = "2.8.6"
+lifecycleViewmodelKtx = "2.8.6"
+
 retrofit = "2.9.0"
-rxjava = "2.2.20"
-rxandroid = "2.1.1"
-okhttp = "4.9.3"
-glide = "4.14.2"
-activity = "1.9.2"
+okhttp = "4.11.0"
+# Moshi
+moshi = "1.15.0"
+glide = "4.16.0"
 
 
 [libraries]
@@ -29,6 +29,7 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 # navigation
@@ -39,22 +40,19 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 
-# retrofit + okhttp + rxjava
+# retrofit + okhttp + moshi
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
-adapter-rxjava2 = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit" }
-rxjava = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rxjava" }
-rxandroid = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rxandroid" }
+moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshi" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
 # glide
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

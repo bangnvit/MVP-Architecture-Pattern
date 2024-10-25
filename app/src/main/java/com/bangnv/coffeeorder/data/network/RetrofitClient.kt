@@ -1,17 +1,23 @@
 package com.bangnv.coffeeorder.data.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 
-object  RetrofitClient {
+object RetrofitClient {
     private const val BASE_URL = "https://dummyjson.com/c/"
 
+    // Initialize Moshi with Kotlin adapter
+    private val moshi: Moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory()) // Add Kotlin support for Moshi
+        .build()
+
+    // Create Retrofit client using Moshi converter and OkHttp client
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(MoshiConverterFactory.create(moshi)) // Use MoshiConverterFactory
         .client(OkHttpClientProvider.client)
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
     val instance: AppApi = retrofit.create(AppApi::class.java)

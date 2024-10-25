@@ -2,11 +2,14 @@ package com.bangnv.coffeeorder.ui_mvp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.bangnv.coffeeorder.R
 import com.bangnv.coffeeorder.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.bangnv.coffeeorder.ui_mvp.account.AccountFragment
+import com.bangnv.coffeeorder.ui_mvp.cart.CartFragment
+import com.bangnv.coffeeorder.ui_mvp.contact.ContactFragment
+import com.bangnv.coffeeorder.ui_mvp.feedback.FeedbackFragment
+import com.bangnv.coffeeorder.ui_mvp.home.HomeFragment
+import com.bangnv.coffeeorder.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,14 +17,28 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        setupBottomNavigation()
+        binding.bottomNavigation.selectedItemId = R.id.nav_home // Set default fragment
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+    private fun setupBottomNavigation() {
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            val selectedFragment = when (item.itemId) {
+                R.id.nav_home -> HomeFragment()
+                R.id.nav_cart -> CartFragment()
+                R.id.nav_feedback -> FeedbackFragment()
+                R.id.nav_contact -> ContactFragment()
+                R.id.nav_account -> AccountFragment()
+                else -> null
+            }
 
-        navView.setupWithNavController(navController)
+            selectedFragment?.let {
+                replaceFragment(this, it)
+                true
+            } ?: false // Return false if no valid fragment is selected
+        }
     }
 }
