@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MVP-Architecture-Pattern</string>
+    <string name="app_name">MVP Architecture Pattern</string>
     <string name="title_home">Trang chủ</string>
     <string name="title_cart">Giỏ hàng</string>
     <string name="title_feedback">Phản hồi</string>
